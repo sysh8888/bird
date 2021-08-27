@@ -1,3 +1,8 @@
+// ps:使用之前请先阅读README.md文件
+//
+/****************************定义和引入********************************/
+// 引入模块
+
 var express = require('express');
 var request = require('superagent');
 var path = require('path');
@@ -6,6 +11,27 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var ga = require('universal-analytics');
+var http = require('http');
+var app = express();
+var server = http.Server(app);
+var host = 'http://localhost';
+var port = 9999; //设置本地转发服务端口
+/*************************以下为设置和启用*****************************/
+// 设置node服务
+app.set('port', port);
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
+app.use(bodyParser.json());
+
+// 启动服务
+server.listen(app.get('port'), function() {
+  console.log("服务已经启动，APIhost：" + host + port);
+});
+
+
+
+/******************以下是api私有部分，必须修改***********************/
 //Welcome Page
 var welcome = require('./routes/welcome');
 //日志输出
@@ -26,7 +52,7 @@ var weather = require('./routes/weather');
 //test
 //var test = require('./routes/test');
 
-var app = express();
+//var app = express();
 app.set('views', path.join(__dirname, 'views'));
 // view engine setup
 app.set('view engine', 'pug');
@@ -137,7 +163,6 @@ app.use(function(err, req, res, next) {
         }
     });
 });
-
 
 
 module.exports = app;
