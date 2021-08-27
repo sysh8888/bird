@@ -8,10 +8,6 @@
   },
   "license": "MIT",
   "private": true,
-  "scripts": {
-    "start": "supervisor node ./bin/www",
-    "super": "supervisor ./bin/www"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/xCss/JsonBird.git"
@@ -31,13 +27,14 @@
     "big-integer": "^1.6.17",
     "blueimp-md5": "^2.7.0",
     "body-parser": "~1.15.1",
-    "cookie-parser": "~1.4.3",
+    "cookie-parser": "^1.4.5",
     "debug": "~2.2.0",
-    "express": "~4.13.4",
+    "express": "^4.13.4",
     "express-generator": "^4.13.4",
     "helmet": "^2.3.0",
     "js-base64": "^2.1.9",
     "lodash": "^4.17.4",
+    "mockjs": "^1.1.0",
     "morgan": "~1.7.0",
     "node-ga": "^0.1.1",
     "pug": "^2.0.0-beta6",
